@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Add a New User</h1>
+    <div class="userform">
+        <div class="error-box">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <p class="error">{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <form action="/create_user" method="post">
+            <label for="fname">First Name:</label>
+            <input type="text" name="fname"><br>
+            <label for="lname">Last Name:</label>
+            <input type="text" name="lname"><br>
+            <label for="email">Email:</label>
+            <input type="text" name="email"><br>
+            <input type="submit" value="Add User" class="button">
+        </form>
+    </div>
+    <a href="/" class="link">Home</a>
+</body>
+</html>
